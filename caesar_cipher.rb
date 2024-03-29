@@ -1,36 +1,28 @@
-def caesar_cipher(str, shift_factor)
-  result = ""
+# frozen_string_literal: true
 
-  str.each_char do |char|
-   if char.match(/[a-zA-Z]/)
-      
-      # Determine whether the character is uppercase or lowercase
-      is_uppercase = char == char.upcase
-      
-      # Convert the character to its ASCII code
-      ascii_code = char.ord
-      
-      # Apply the shift factor
-      shifted_code = (ascii_code + shift_factor - (is_uppercase ? 'A'.ord : 'a'.ord)) % 26 + (is_uppercase ? 'A'.ord : 'a'.ord)
-      
-      # Convert the shifted code back to a character
-      shifted_char = shifted_code.chr
-      
-      # Append the shifted character to the result string
-      result += shifted_char
-    else
-      # If the character is not a letter, leave it unchanged
-      result += char
-    end
+def caesar_cipher(string, shift_factor)
+  converted_characters = []
+
+  string.each_char do |char|
+    # check if character is lower case
+    converted_characters << if char.ord.between?(97, 122)
+                              (((((char.ord - 97) + shift_factor) + 26) % 26) + 97).chr
+                            elsif char.ord.between?(65, 90)
+                              (((((char.ord - 65) + shift_factor) + 26) % 26) + 65).chr
+                            else
+                              char
+                            end
   end
 
-  return result
+  converted_characters.join
 end
 
-# Example usage:
-original_string = "Hello, World!"
-shift_factor = 3
-encrypted_string = caesar_cipher(original_string, shift_factor)
+p caesar_cipher('Hello, World!', 3)
 
-puts "Original String: #{original_string}"
-puts "Encrypted String: #{encrypted_string}"
+# Example usage:
+# original_string = "Hello, World!"
+# shift_factor = 3
+# encrypted_string = caesar_cipher(original_string, shift_factor)
+
+# puts "Original String: #{original_string}"
+# puts "Encrypted String: #{encrypted_string}"

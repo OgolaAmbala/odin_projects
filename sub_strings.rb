@@ -1,12 +1,14 @@
-dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+# frozen_string_literal: true
 
-def substrings(string, dictionary)
-matches = {}
-  dictionary.each do |word|
-    matches[word] = string.downcase.scan(word).count
+def substrings(str, arr)
+  matches = {}
+
+  arr.each do |word|
+    matches[word] = str.downcase.scan(word).count
   end
-  matches
+  p matches
 end
 
-puts substrings("Below", dictionary)
-puts substrings("Howdy partner, sit down! How's it going?", dictionary)
+dictionary = %w[below down go going horn how howdy it i low own part partner sit]
+
+substrings('below', dictionary)
