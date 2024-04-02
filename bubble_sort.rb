@@ -1,23 +1,26 @@
 # frozen_string_literal: true
 
-def bubble_sort(array)
-  n = array.length
+def bubble_sort(numbers)
+  loop do
+    swapped = false # Flag to indicate if any swaps were made in this pass
 
-  # Traverse through all array elements
-  (0..n-1).each do |i|
-    # Last i elements are already in place, so we don't need to check them
-    (0..n-i-1).each do |j|
-      # Swap if the element found is greater than the next element
-      if array[j] > array[j+1]
-        array[j], array[j+1] = array[j+1], array[j]
-      end
+    # Loop through the list
+    (numbers.length - 1).times do |i|
+      # Compare adjacent elements and swap if necessary
+      next unless numbers[i] > numbers[i + 1] # Skip if in correct order
+
+      # Swap elements
+      numbers[i], numbers[i + 1] = numbers[i + 1], numbers[i]
+      swapped = true # Set swapped flag to true
     end
+
+    # If no swaps were made, the list is sorted, so we can exit the loop
+    break unless swapped
   end
 
-  array # Return the sorted array
+  # Return the sorted list
+  numbers
 end
 
-# Example usage:
-unsorted_array = [64, 34, 25, 12, 22, 11, 90]
-sorted_array = bubble_sort(unsorted_array)
-puts "Sorted Array: #{sorted_array}"
+array = [4, 3, 78, 2, 0, 2]
+p bubble_sort(array)
