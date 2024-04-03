@@ -22,5 +22,5 @@ def bubble_sort(numbers)
   numbers
 end
 
-array = [4, 3, 78, 2, 0, 2]
+array = [4, 2, 7, 1, 3]
 p bubble_sort(array)
