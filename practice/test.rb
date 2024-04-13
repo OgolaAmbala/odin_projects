@@ -1,11 +1,20 @@
 # frozen_string_literal: true
 
-class Foo
-  def to_s
-    '42'
+module Mammal
+  class Dog
+    def speak(sound)
+      p "#{sound}"
+    end
+  end
+
+  class Cat
+    def say_name(name)
+      p "#{name}"
+    end
   end
 end
 
-foo = Foo.new
-puts foo
-puts "foo is #{foo}"
+buddy = Mammal::Dog.new
+kitty = Mammal::Cat.new
+buddy.speak('Arf!')
+kitty.say_name('kitty')
