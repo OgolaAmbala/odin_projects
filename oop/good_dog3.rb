@@ -5,13 +5,13 @@ class GoodDog
 
   attr_accessor :name, :age
 
-  def initialize(name, age)
+  def initialize(name, _age)
     @name = name
     @age = age * DOG_YEARS
   end
 
   def to_s
-    "This dog's name os #{name} and is is #{age} in dog years"
+    "This dog's name is #{name} and is is #{age} in dog years"
   end
 end
 

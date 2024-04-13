@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-class MyCar
-  attr_accessor :color
-  attr_reader :year
+class Vehicle
+  attr_accessor :model, :color, :year
 
   def initialize(model, color, year)
     @model = model
@@ -24,7 +23,13 @@ class MyCar
   def current_speed
     puts "You are now going #{@current_speed}mph."
   end
+end
 
+def self.mileage(litres, miles)
+  puts "#{miles / litres} miles per litre of petrol"
+end
+
+class MyCar < Vehicle
   def shut_down
     @current_speed = 0
     puts 'Park the car'
@@ -33,10 +38,6 @@ class MyCar
   def spray_paint(color)
     self.color = color
     puts "The new #{color} looks great on your car"
-  end
-
-  def self.mileage(litres, miles)
-    puts "#{miles / litres} miles per litre of petrol"
   end
 end
 
@@ -52,4 +53,3 @@ benz.current_speed
 puts benz.color
 puts benz.year
 benz.spray_paint('gold')
-MyCar.mileage(12, 90)
