@@ -1,1 +1,1 @@
-# odin_projects
+Projects and exercises as part of the Odin Project course
